@@ -2,7 +2,7 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "ubuntu/vivid64"
+  config.vm.box = "hashicorp/precise64"
 
   # fix "stdin: is not a tty" error
   config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
