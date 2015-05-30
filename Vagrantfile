@@ -18,7 +18,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     d.build_image "/vagrant", args: "-t alonsodomin/youtrack"
     d.run "youtrack",
           image: "alonsodomin/youtrack",
-          args: "-p 8080:8080"
+          args: "-p 8080:8080 -v /var/lib/youtrack:/var/lib/youtrack"
   end
   
 end

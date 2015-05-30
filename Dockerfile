@@ -3,19 +3,21 @@ FROM java:8
 MAINTAINER Antonio Alonso Dominguez "alonso@codenibbles.com"
 
 ENV YOUTRACK_VERSION 6.0.12619
-ENV YOUTRACK_HOME /opt/local/youtrack
-ENV YOUTRACK_VAR_DIR /var/lib/youtrack
+ENV YOUTRACK_HOME /opt/lib/youtrack
+ENV YOUTRACK_USER_HOME /opt/share/youtrack
+ENV YOUTRACK_DB_DIR /var/lib/youtrack
 
 RUN mkdir -p $YOUTRACK_HOME && \
-	mkdir -p $YOUTRACK_VAR_DIR && \
+	mkdir -p $YOUTRACK_DB_DIR && \
 	mkdir -p /etc/youtrack && \
+	mkdir -p $YOUTRACK_USER_HOME && \
 	wget -nv https://download.jetbrains.com/charisma/youtrack-$YOUTRACK_VERSION.jar -O $YOUTRACK_HOME/youtrack-$YOUTRACK_VERSION.jar && \
 	ln -s $YOUTRACK_HOME/youtrack-$YOUTRACK_VERSION.jar $YOUTRACK_HOME/youtrack.jar
 
 COPY conf/* /etc/youtrack/
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
-VOLUME [ "/etc/youtrack" ]
+VOLUME [ "/etc/youtrack", $YOUTRACK_DB_DIR, $YOUTRACK_USER_HOME ]
 	
 EXPOSE 8080
 
