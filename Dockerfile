@@ -1,4 +1,4 @@
-FROM java:8
+FROM java:7-jre
 
 MAINTAINER Antonio Alonso Dominguez "alonso@codenibbles.com"
 
@@ -17,7 +17,7 @@ RUN mkdir -p $YOUTRACK_HOME && \
 COPY conf/* /etc/youtrack/
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
-VOLUME [ "/etc/youtrack", $YOUTRACK_DB_DIR, $YOUTRACK_USER_HOME ]
+VOLUME [ "/etc/youtrack", "/var/lib/youtrack", "/opt/share/youtrack" ]
 	
 EXPOSE 8080
 
