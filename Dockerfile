@@ -2,7 +2,7 @@ FROM java:7-jre
 
 MAINTAINER Antonio Alonso Dominguez "alonso@codenibbles.com"
 
-ENV YOUTRACK_VERSION 6.0.12619
+ENV YOUTRACK_VERSION 6.5.17015
 ENV YOUTRACK_HOME /opt/lib/youtrack
 ENV YOUTRACK_USER_HOME /opt/share/youtrack
 ENV YOUTRACK_DB_DIR /var/lib/youtrack
